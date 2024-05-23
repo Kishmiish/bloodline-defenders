@@ -51,6 +51,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dbe0706ab9090aa99b71abd4e058866c, type: 2}
   - {fileID: 11400000, guid: 4f2f51b7a9f266b1d9cba6cf58682c05, type: 2}
   - {fileID: 11400000, guid: 02d11512e2084b6349643e9039a4d3db, type: 2}
+  obstacles:
+  - {fileID: 665405955789335089, guid: 13c515507d949829d95134e8c08d1910, type: 3}
   magnification: 10
   chunkSize: 60
   xOffset: 0
