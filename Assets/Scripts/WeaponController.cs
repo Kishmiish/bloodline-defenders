@@ -30,13 +30,19 @@ public class WeaponController : MonoBehaviour
         if (spriteRenderer.flipX == false) {
             rigthWeapon.SetActive(true);
             Collider2D[] colliders =  Physics2D.OverlapBoxAll(rigthWeapon.transform.position, powerOfAttack, 0f);
-            ApplyDamage(colliders);
+            if(colliders.Length > 0)
+            {
+                ApplyDamage(colliders);
+            }
         }
         else
         {
             leftWeapon.SetActive(true);
             Collider2D[] colliders = Physics2D.OverlapBoxAll(leftWeapon.transform.position, powerOfAttack, 0f);
-            ApplyDamage(colliders);
+            if(colliders.Length > 0)
+            {
+                ApplyDamage(colliders);
+            }
         }
     }
 

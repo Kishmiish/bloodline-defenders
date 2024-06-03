@@ -30,7 +30,6 @@ public class EnemyGenerator : MonoBehaviour
         angle = UnityEngine.Random.Range(0, (float) Math.PI * 2f);
         distance = UnityEngine.Random.Range(minRadisu, maxRadius);
         GameObject enemyInstance = Instantiate(enemy, new Vector3((float)Math.Cos(angle) * distance, (float) Math.Sin(angle) * distance,0) + player.transform.position, quaternion.identity);
-        Debug.Log(enemyInstance);
         enemies.Add(enemyInstance);
     }
 

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private Animation deathAnimation;
     float health = 100;
 
     [HideInInspector]
@@ -47,22 +50,33 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
+
+    void SetHealthBar()
+    {
+        healthBar.value = health;
+    }
     public void receiveDamage(float damage){
         if(damage >= health){
             Death();
         }
         else{
             health -= damage;
+            if(health > 0)
+            {
+                animator.SetTrigger("Hit");
+            }
+            SetHealthBar();
         }
     }
     void Death(){
         if(health > 0){
             animator.SetTrigger("Dead");
-            Debug.Log("Trigger");
         }
         health = 0;
+        SetHealthBar();
         gameManager.GameOver();
         gameObject.GetComponent<Collider2D>().enabled = false;
+        GetComponent<PlayerMovement>().enabled = false;
         GetComponentInChildren<WeaponController>().CancelInvoke();
         GameObject.Find("Weapon").SetActive(false);
     }

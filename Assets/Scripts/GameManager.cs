@@ -7,10 +7,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private EnemyGenerator enemyGenerator;
+    public bool isPlayerAlive;
 
     void Start()
     {
-        
+        isPlayerAlive = true;
     }
 
 
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver(){
+        isPlayerAlive = false;
         enemyGenerator.CancelInvoke();
         enemyGenerator.PlayerDied();
         //Time.timeScale = 0f;

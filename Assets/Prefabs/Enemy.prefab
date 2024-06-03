@@ -184,6 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  health: 5
+  health: 30
   attackDelay: 0.5
-  attackDamage: 60
+  attackDamage: 5

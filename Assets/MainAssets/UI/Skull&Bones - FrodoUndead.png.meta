@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f4b56e9025e406944a25b021cd75efee
+guid: 77e41d7e1d7655bb19d51988fc9b5b37
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,43 +97,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hit_0
+      name: Skull
       rect:
         serializedVersion: 2
-        x: 52
-        y: 45
-        width: 29
-        height: 28
+        x: 20
+        y: 72
+        width: 66
+        height: 66
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 588df0b8c7f1c30d9badb2bb9b6b7f7f
-      internalID: -1233772519
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hit_1
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 5
-        width: 29
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 23d556f1ff21bbeada9eedf4b745fc2a
-      internalID: 1859039575
+      spriteID: 61b3b04110b63f4a2a272c4c996a9bc2
+      internalID: -1439386396
       vertices: []
       indices: 
       edges: []
@@ -149,13 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      hit_0: -1233772519
-      hit_1: 1859039575
-      hit_2: 1767986452
-      hit_3: 1942931881
-      hit_4: 1781533811
-      hit_5: 489337308
-      hit_6: 706671601
+      Skull: -1439386396
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
