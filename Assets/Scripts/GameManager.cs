@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private EnemyGenerator enemyGenerator;
 
     void Start()
     {
@@ -30,5 +31,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+    }
+
+    public void GameOver(){
+        enemyGenerator.CancelInvoke();
+        enemyGenerator.PlayerDied();
+        //Time.timeScale = 0f;
     }
 }

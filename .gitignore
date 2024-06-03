@@ -73,3 +73,5 @@ crashlytics-build.properties
 
 /Assets/DefaultAssets/*
 /Assets/DefaultAssets.meta
+/Assets/test/
+/Assets/test.meta
