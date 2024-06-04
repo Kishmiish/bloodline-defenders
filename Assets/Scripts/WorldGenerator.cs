@@ -72,9 +72,19 @@ public class WorldGenerator : MonoBehaviour
 
     void generateObstacle(int xPosition, int yPosition){
         float chance = UnityEngine.Random.Range(0f, 10f);
-        if(0 < chance && chance < 0.05){
-            Vector3 position = new Vector3(xPosition, yPosition, 0);
-            Instantiate(obstacles[0], position, Quaternion.identity, obstaclesGroup.transform);
+        if(tilemap.GetTile(new Vector3Int(xPosition,yPosition,0)) != tiles[^1]){ //tiles[^1] == tiles[tiles.length - 1]
+            if(0 < chance && chance < 0.05){
+                Vector3 position = new Vector3(xPosition, yPosition, 0);
+                Instantiate(obstacles[0], position, Quaternion.identity, obstaclesGroup.transform);
+            }
+            else if(0.05 < chance && chance < 0.1){
+                Vector3 position = new Vector3(xPosition, yPosition, 0);
+                Instantiate(obstacles[1], position, Quaternion.identity, obstaclesGroup.transform);
+            }
+            else if(0.1 < chance && chance < 0.15){
+                Vector3 position = new Vector3(xPosition, yPosition, 0);
+                Instantiate(obstacles[2], position, Quaternion.identity, obstaclesGroup.transform);
+            }
         }
     }
 }

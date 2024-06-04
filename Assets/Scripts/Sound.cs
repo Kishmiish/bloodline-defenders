@@ -10,6 +10,7 @@ public class Sound
 {
     public AudioClip audioClip;
     public String name;
+    
     [Range(0f, 1f)]
     public float volume;
     public bool isLoop;

@@ -47,10 +47,13 @@ MonoBehaviour:
   player: {fileID: 0}
   tilemap: {fileID: 0}
   tiles:
-  - {fileID: 11400000, guid: 9e326d348789a93d288cc2f75563c588, type: 2}
-  - {fileID: 11400000, guid: dbe0706ab9090aa99b71abd4e058866c, type: 2}
-  - {fileID: 11400000, guid: 4f2f51b7a9f266b1d9cba6cf58682c05, type: 2}
-  - {fileID: 11400000, guid: 02d11512e2084b6349643e9039a4d3db, type: 2}
+  - {fileID: 11400000, guid: b62c51919d50d239daeb4fe4e06239d5, type: 2}
+  - {fileID: 11400000, guid: 345fffadc713e012892b22b941e83c63, type: 2}
+  - {fileID: 11400000, guid: 3956045f4bd1d5137acf707c631ec73b, type: 2}
+  - {fileID: 11400000, guid: 2ff69b5be863767088c55ff27832eec6, type: 2}
+  - {fileID: 11400000, guid: 3ca47e316f9016992a402988286634f2, type: 2}
+  - {fileID: 11400000, guid: bbbb43addab8b945490f8c51f4c1f9c7, type: 2}
+  obstaclesGroup: {fileID: 0}
   obstacles:
   - {fileID: 665405955789335089, guid: 13c515507d949829d95134e8c08d1910, type: 3}
   magnification: 10

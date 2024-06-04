@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         InputManegement();  
     }
-     void FixedUpdate()
+    void FixedUpdate()
     {
         Move();
     }

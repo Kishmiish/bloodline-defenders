@@ -11,25 +11,21 @@ public class WeaponController : MonoBehaviour
     [SerializeField] Vector2 powerOfAttack = new Vector2(4f, 2f);
     [SerializeField] int weaponDamage = 1;
     SpriteRenderer spriteRenderer;
-
+    Animator animator;
     private void Awake()
     {
         spriteRenderer = GetComponentInParent<SpriteRenderer>();
+        animator = GetComponentInParent<Animator>();
     }
 
     void Start()
     {
         InvokeRepeating(nameof(Attack),timetoattack,timetoattack);
-        InvokeRepeating(nameof(Clear),timetoattack + 0.3f, timetoattack + 0.3f);
-    }
-    private void Update()
-    {
-        
     }
     private void Attack() {
         if (spriteRenderer.flipX == false) {
-            rigthWeapon.SetActive(true);
             Collider2D[] colliders =  Physics2D.OverlapBoxAll(rigthWeapon.transform.position, powerOfAttack, 0f);
+            animator.SetTrigger("Attack");
             if(colliders.Length > 0)
             {
                 ApplyDamage(colliders);
@@ -37,8 +33,8 @@ public class WeaponController : MonoBehaviour
         }
         else
         {
-            leftWeapon.SetActive(true);
             Collider2D[] colliders = Physics2D.OverlapBoxAll(leftWeapon.transform.position, powerOfAttack, 0f);
+            animator.SetTrigger("Attack");
             if(colliders.Length > 0)
             {
                 ApplyDamage(colliders);
@@ -56,11 +52,4 @@ public class WeaponController : MonoBehaviour
             }
         }
     }
-
-    void Clear()
-    {
-        rigthWeapon.SetActive(false);
-        leftWeapon.SetActive(false);
-    }
-
 }

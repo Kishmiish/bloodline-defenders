@@ -4,12 +4,20 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI TimerText;
+    private GameManager gameManager;
     private float elpasedTime;
 
+    void Awake()
+    {
+        gameManager = GetComponent<GameManager>();
+    }
     void Update()
     {
-        elpasedTime += Time.deltaTime;
-        UpdateTimerText();
+        if(gameManager.isPlayerAlive)
+        {
+            elpasedTime += Time.deltaTime;
+            UpdateTimerText();
+        }
     }
 
     void UpdateTimerText()

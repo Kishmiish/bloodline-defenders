@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,16 +11,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] float health = 3f;
     [SerializeField] float attackDelay = 0.5f;
     [SerializeField] float attackDamage = 3f;
+    private Slider healthBar;
     private GameObject manager;
     private GameManager gameManager;
     GameObject Player;
     Rigidbody2D rigidBody2D;
     Vector3 currentPosition;
+    Animator animator;
     void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         manager = GameObject.FindGameObjectWithTag("GameController");
         gameManager = manager.GetComponent<GameManager>();
+        animator = GetComponent<Animator>();
+        healthBar = GetComponentInChildren<Slider>();
+        healthBar.maxValue = health;
     }
     void Start()
     {
@@ -47,15 +53,27 @@ public class Enemy : MonoBehaviour
     public void Damage(int damage)
     {
         health -= damage;
+        setHealthBar();
+        Debug.Log(health);
         if (health <= 0)
         {
             manager.GetComponent<KillCounter>().Kill();
-            Destroy(gameObject);
+            animator.SetTrigger("Death");
+            StartCoroutine(animationDelay());
         }
+    }
+    IEnumerator animationDelay()
+    {
+        yield return new WaitForSeconds(0.7f);
+        Destroy(gameObject);
     }
     public void Freeze(){
         rigidBody2D.velocity = Vector2.zero;
         CancelInvoke();
+    }
+    void setHealthBar()
+    {
+        healthBar.value = health;
     }
     void OnTriggerEnter2D(Collider2D collider)
     {

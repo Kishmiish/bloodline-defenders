@@ -26,7 +26,6 @@ public class HoverMoveRight : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if (isHovering && transform.position.x - originalPosition.x < moveAmount)
         {
-            
             transform.position += Vector3.right * speed * Time.deltaTime;
         }
         else if(!isHovering && transform.position.x >= originalPosition.x)

@@ -7,11 +7,13 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private Sound[] sounds;
     [SerializeField] private AudioMixer audioMixer;
+    private GameObject audioMixerHolder;
     private bool isMuted = false;
     private float currentVolume;
     private static AudioManager instance;
     void Awake()
     {
+        audioMixerHolder = GameObject.Find("Audiomixergroup");
         if(instance == null)
         {
             instance = this;
@@ -28,7 +30,7 @@ public class AudioManager : MonoBehaviour
             s.audioSource = gameObject.AddComponent<AudioSource>();
             s.audioSource.clip = s.audioClip;
             s.audioSource.loop = s.isLoop;
-            s.audioSource.volume = s.volume;
+            s.audioSource.outputAudioMixerGroup = audioMixerHolder.GetComponent<audiomixertest>().audioMixerGroup;
         }
     }
 

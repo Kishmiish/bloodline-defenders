@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4169401995726085600}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
   enemyGenerator: {fileID: 0}
+  isPlayerAlive: 0
 --- !u!114 &2685480005508322532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b66d3dd2999a914ca2f6447d7b61451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 0}
+  TimerText: {fileID: 0}
 --- !u!114 &4169401995726085600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,4 +74,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9900b0478404b180eb477baed0f0ec44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 0}
+  killCounterText: {fileID: 0}

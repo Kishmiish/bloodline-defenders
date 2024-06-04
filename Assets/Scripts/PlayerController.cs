@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private Slider healthBar;
-    [SerializeField] private Animation deathAnimation;
     float health = 100;
 
     [HideInInspector]
@@ -57,6 +56,7 @@ public class PlayerController : MonoBehaviour
     }
     public void receiveDamage(float damage){
         if(damage >= health){
+            CancelInvoke();
             Death();
         }
         else{
@@ -68,9 +68,11 @@ public class PlayerController : MonoBehaviour
             SetHealthBar();
         }
     }
+
     void Death(){
         if(health > 0){
-            animator.SetTrigger("Dead");
+            animator.SetTrigger("DeadTrigger");
+            animator.SetBool("DeadBoolean", true);
         }
         health = 0;
         SetHealthBar();
