@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bc491359ea2429ff1b2deb999e2ace54
+guid: 1f1aac48662cb8f69a2f03b7f4ed00e2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,19 +93,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -114,27 +101,6 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3
-        y: 4
-        width: 10
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ace00f0246b458d73b837c7a0b9f4b3e
-      internalID: 551565193
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fly_anim_spritesheet_1
-      rect:
-        serializedVersion: 2
-        x: 18
         y: 4
         width: 12
         height: 8
@@ -145,8 +111,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25d32934f208b141fb4238a86a53ebec
-      internalID: 1521555392
+      spriteID: 9ef0f6ff0107a9831829cb7c8d8221b7
+      internalID: -658722984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fly_anim_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 4
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 410758cf465847711953f743e2f81ced
+      internalID: -934430445
       vertices: []
       indices: 
       edges: []
@@ -155,31 +142,10 @@ TextureImporter:
       name: fly_anim_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 35
-        y: 3
-        width: 10
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e89f41c1bd816c4d0ac77f74df26bd87
-      internalID: 441615720
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fly_anim_spritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 50
+        x: 49
         y: 4
         width: 12
-        height: 7
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ec38b3cd84ec572abe82bbdbb3ddd87
-      internalID: 461922857
+      spriteID: 231431901dabffab2a3c1e77f8a8b85a
+      internalID: 628765078
       vertices: []
       indices: 
       edges: []
@@ -204,10 +170,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fly_anim_spritesheet_0: 551565193
-      fly_anim_spritesheet_1: 1521555392
-      fly_anim_spritesheet_2: 441615720
-      fly_anim_spritesheet_3: 461922857
+      fly_anim_spritesheet_0: -658722984
+      fly_anim_spritesheet_1: -934430445
+      fly_anim_spritesheet_2: 628765078
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -32,7 +32,8 @@ public class EnemyGenerator : MonoBehaviour
         int numberOfEnemies = UnityEngine.Random.Range(1, maxEnemiesPerWave + 1);
         for (int i = 0; i < numberOfEnemies; i++)
         {
-            Instantiate(enemy, new Vector3((float)Math.Cos(angle) * distance, (float) Math.Sin(angle) * distance,0) + player.transform.position, quaternion.identity);
+            float distanceBetweenEnemies = 1 + (i * 0.1f);
+            Instantiate(enemy, new Vector3((float)Math.Cos(angle + distanceBetweenEnemies) * distance * distanceBetweenEnemies, (float) Math.Sin(angle + distanceBetweenEnemies) * distance * distanceBetweenEnemies, 0) + player.transform.position, quaternion.identity);
         }
         IncreaseDifficulty();
     }
@@ -41,6 +42,6 @@ public class EnemyGenerator : MonoBehaviour
     {
         waveNumber++;
         currentSpawnInterval = Mathf.Max(0.1f, currentSpawnInterval - spawnIntervalDecrease * waveNumber);
-        maxEnemiesPerWave = Mathf.Max(10, maxEnemiesPerWave + 1);
+        maxEnemiesPerWave = Mathf.Min(10, maxEnemiesPerWave + 1);
     }
 }

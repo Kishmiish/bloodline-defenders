@@ -54,7 +54,6 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
         setHealthBar();
-        Debug.Log(health);
         if (health <= 0)
         {
             manager.GetComponent<KillCounter>().Kill();
