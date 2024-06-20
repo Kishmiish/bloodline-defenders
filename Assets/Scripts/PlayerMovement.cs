@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     public float speed;
     
@@ -25,11 +24,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        InputManegement();  
+        if(IsOwner)
+        {
+            InputManegement();  
+        }
     }
     void FixedUpdate()
     {
-        Move();
+        if(IsOwner)
+        {
+            Move();
+        }
     }
 
     void InputManegement()
