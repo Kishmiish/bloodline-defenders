@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver(){
-        
         isPlayerAlive = false;
         enemyGenerator.CancelInvoke();
         //enemyGenerator.PlayerDied();
