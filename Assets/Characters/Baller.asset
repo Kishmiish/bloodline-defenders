@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   displayName: Baller
-  icon: {fileID: 1559822711, guid: 6eb1c3e89aca58c92a2f10733bb5c7b6, type: 3}
+  icon: {fileID: 70355983, guid: 6eb1c3e89aca58c92a2f10733bb5c7b6, type: 3}
   gameplayPrefab: {fileID: 4963864621168613259, guid: 28926a0797668023cb4f2fdbb19cdbae, type: 3}

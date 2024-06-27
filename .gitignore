@@ -75,3 +75,7 @@ crashlytics-build.properties
 /Assets/DefaultAssets.meta
 /Assets/test/
 /Assets/test.meta
+Assets/PlayFabEditorExtensions.meta
+Assets/PlayFabEditorExtensions/
+Assets/PlayFabSDK.meta
+Assets/PlayFabSDK/

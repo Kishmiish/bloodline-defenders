@@ -37,7 +37,6 @@ public class EnemyGenerator : NetworkBehaviour
     void GenerateEnemyForPlayers()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-        Debug.Log(players.Length);
         foreach (GameObject temp in players)
         {
             GenerateEnemy(temp);
