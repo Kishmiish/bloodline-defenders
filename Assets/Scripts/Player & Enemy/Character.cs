@@ -10,6 +10,12 @@ public class Character : ScriptableObject
 {
     [SerializeField] private int id = -1;
     [SerializeField] private string displayName = "New Display Name";
+
+    internal void Heal(int healthAmount)
+    {
+        throw new NotImplementedException();
+    }
+
     [SerializeField] private Sprite icon;
     [SerializeField] private NetworkObject gameplayPrefab;
     public int Id => id;
