@@ -5,20 +5,17 @@ using UnityEngine;
 
 public class EnemyGenerator : NetworkBehaviour
 {
-    [SerializeField] private float minRadisu;
+    [SerializeField] private float minRadius;
     [SerializeField] private float maxRadius;
-    [SerializeField] private GameObject enemy;
-    [SerializeField] private float spawnIntervalDecrease = 0.05f;
+    [SerializeField] private Enemy enemy;
+    [SerializeField] private float spawnInterval = 1f;
     private GameObject[] players;
-    private float initialSpawnInterval;
-    private float currentSpawnInterval;
-    private int waveNumber;
-    private int maxEnemiesPerWave;
     private float angle;
     private float distance;
 
     void Awake()
     {
+        spawnInterval = 1f;
         players = GameObject.FindGameObjectsWithTag("Player");
     }
 
@@ -26,11 +23,7 @@ public class EnemyGenerator : NetworkBehaviour
     {
         if(IsHost || IsServer)
         {
-            maxEnemiesPerWave = 2;
-            waveNumber = 1;
-            initialSpawnInterval = 3f;
-            currentSpawnInterval = initialSpawnInterval;
-            InvokeRepeating(nameof(GenerateEnemyForPlayers),currentSpawnInterval,currentSpawnInterval);
+            InvokeRepeating(nameof(GenerateEnemyForPlayers),spawnInterval,spawnInterval);
         }
     }
 
@@ -46,21 +39,14 @@ public class EnemyGenerator : NetworkBehaviour
     void GenerateEnemy(GameObject player)
     {
         angle = UnityEngine.Random.Range(0, (float) Math.PI * 2f);
-        distance = UnityEngine.Random.Range(minRadisu, maxRadius);
-        int numberOfEnemies = UnityEngine.Random.Range(1, maxEnemiesPerWave + 1);
-        for (int i = 0; i < numberOfEnemies; i++)
-        {
-            float distanceBetweenEnemies = 1 + (i * 0.1f);
-            var temp = Instantiate(enemy, new Vector3((float)Math.Cos(angle + distanceBetweenEnemies) * distance * distanceBetweenEnemies, (float) Math.Sin(angle + distanceBetweenEnemies) * distance * distanceBetweenEnemies, 0) + player.transform.position, quaternion.identity);
-            temp.GetComponent<NetworkObject>().Spawn(true);
-        }
-        IncreaseDifficulty();
+        distance = UnityEngine.Random.Range(minRadius, maxRadius);
+        var temp = Instantiate(enemy, new Vector3((float)Math.Cos(angle) * distance, (float) Math.Sin(angle) * distance, 0) + player.transform.position, quaternion.identity);
+        temp.GetComponent<NetworkObject>().Spawn(true);
     }
 
-    void IncreaseDifficulty()
+    public void IncreaseDifficulty()
     {
-        waveNumber++;
-        currentSpawnInterval = Mathf.Max(0.1f, currentSpawnInterval - spawnIntervalDecrease * waveNumber);
-        maxEnemiesPerWave = Mathf.Min(10, maxEnemiesPerWave + 1);
+        spawnInterval *= 0.95f;
+        enemy.IncreaseDifficulty();
     }
 }

@@ -3035,9 +3035,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24300002, guid: f56f9a052ae9e9f3592341c241012f96, type: 2}
     - target: {fileID: 4801200561666154444, guid: 90053de7f69c37f3ea4e3281ef890980, type: 3}
+      propertyPath: sounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801200561666154444, guid: 90053de7f69c37f3ea4e3281ef890980, type: 3}
+      propertyPath: sounds.Array.data[1].name
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801200561666154444, guid: 90053de7f69c37f3ea4e3281ef890980, type: 3}
       propertyPath: sounds.Array.data[0].volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4801200561666154444, guid: 90053de7f69c37f3ea4e3281ef890980, type: 3}
+      propertyPath: sounds.Array.data[1].isLoop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801200561666154444, guid: 90053de7f69c37f3ea4e3281ef890980, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801200561666154444, guid: 90053de7f69c37f3ea4e3281ef890980, type: 3}
+      propertyPath: sounds.Array.data[1].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 50f4d57785f77cadca7ac51ee32d9d5e, type: 3}
     - target: {fileID: 6560545578169991228, guid: 90053de7f69c37f3ea4e3281ef890980, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

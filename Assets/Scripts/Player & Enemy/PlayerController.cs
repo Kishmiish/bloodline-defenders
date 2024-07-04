@@ -19,12 +19,14 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     SpriteRenderer spriteRenderer;
+    private WeaponController weaponController;
     
     void Start()
     {
         animator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        weaponController = GetComponentInChildren<WeaponController>();
     }
 
     
@@ -67,6 +69,11 @@ public class PlayerController : MonoBehaviour
             }
             SetHealthBar();
         }
+    }
+
+    public void DealDamage()
+    {
+        weaponController.Attack();
     }
 
     void Death(){

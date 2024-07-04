@@ -1,42 +1,52 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float speed = 3f;
-    [SerializeField] float health = 3f;
-    [SerializeField] float attackDelay = 0.5f;
-    [SerializeField] float attackDamage = 3f;
+    [SerializeField] private float initialSpeed;
+    [SerializeField] private float initialHealth;
+    [SerializeField] private float InitialAttackDelay;
+    [SerializeField] private float InitialAttackDamage;
+    private float speed;
+    private float health;
+    private float attackDelay;
+    private float attackDamage;
     private Slider healthBar;
     private GameObject manager;
     private GameManager gameManager;
-    GameObject[] players;
-    GameObject Player;
-    Rigidbody2D rigidBody2D;
-    Vector3 currentPosition;
-    Animator animator;
+    private GameObject[] players;
+    private GameObject Player;
+    private Rigidbody2D rigidBody2D;
+    private Vector3 currentPosition;
+    private Animator animator;
     void Awake()
     {
+        ResetValues();
         Player = GameObject.FindGameObjectWithTag("Player");
         manager = GameObject.FindGameObjectWithTag("GameController");
         gameManager = manager.GetComponent<GameManager>();
         animator = GetComponent<Animator>();
         healthBar = GetComponentInChildren<Slider>();
-        healthBar.maxValue = health;
+        rigidBody2D = GetComponent<Rigidbody2D>();
     }
     void Start()
     {
-        rigidBody2D = GetComponent<Rigidbody2D>();
+        healthBar.maxValue = health;
+        setHealthBar();
+    }
+    void ResetValues(){
+        health = initialHealth;
+        speed = initialSpeed;
+        attackDamage = InitialAttackDamage;
+        attackDelay = InitialAttackDelay;
     }
 
     bool CheckForClosestEnemy()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-        if(players == null) { return false; }
+        if(players == null || players.Length == 0) { return false; }
         Player = players[0];
         foreach (GameObject temp in players)
         {
@@ -86,7 +96,16 @@ public class Enemy : MonoBehaviour
     }
     void setHealthBar()
     {
+        if(healthBar == null){
+            healthBar = GetComponentInChildren<Slider>();
+        }
         healthBar.value = health;
+    }
+    public void IncreaseDifficulty()
+    {
+        health *= 1.05f;
+        setHealthBar();
+        attackDamage *= 1.05f;
     }
     void OnTriggerEnter2D(Collider2D collider)
     {

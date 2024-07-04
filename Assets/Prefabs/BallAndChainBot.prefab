@@ -825,7 +825,7 @@ MonoBehaviour:
   rigthWeapon: {fileID: 1754427427090257101}
   leftWeapon: {fileID: 4927629532981116820}
   powerOfAttack: {x: 3, y: 2}
-  weaponDamage: 1
+  weaponDamage: 8
 --- !u!1 &5635744994040991520
 GameObject:
   m_ObjectHideFlags: 0

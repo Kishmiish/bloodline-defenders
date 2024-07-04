@@ -20,12 +20,14 @@ public class WeaponController : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating(nameof(Attack),timetoattack,timetoattack);
+        InvokeRepeating(nameof(AttackAnimation),timetoattack,timetoattack);
     }
-    private void Attack() {
+    private void AttackAnimation(){
+        animator.SetTrigger("Attack");
+    }
+    public void Attack() {
         if (spriteRenderer.flipX == false) {
             Collider2D[] colliders =  Physics2D.OverlapBoxAll(rigthWeapon.transform.position, powerOfAttack, 0f);
-            animator.SetTrigger("Attack");
             if(colliders.Length > 0)
             {
                 ApplyDamage(colliders);
@@ -34,7 +36,6 @@ public class WeaponController : MonoBehaviour
         else
         {
             Collider2D[] colliders = Physics2D.OverlapBoxAll(leftWeapon.transform.position, powerOfAttack, 0f);
-            animator.SetTrigger("Attack");
             if(colliders.Length > 0)
             {
                 ApplyDamage(colliders);
