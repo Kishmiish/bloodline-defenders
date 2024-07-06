@@ -821,11 +821,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59a30db2a3c82427bfbe8d8c827bda4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timetoattack: 3
+  initialTimeToAttack: 3
   rigthWeapon: {fileID: 1754427427090257101}
   leftWeapon: {fileID: 4927629532981116820}
   powerOfAttack: {x: 3, y: 2}
-  weaponDamage: 8
+  initialWeaponDamage: 8
 --- !u!1 &5635744994040991520
 GameObject:
   m_ObjectHideFlags: 0

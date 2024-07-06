@@ -442,6 +442,9 @@ MonoBehaviour:
   initialHealth: 7
   InitialAttackDelay: 0.7
   InitialAttackDamage: 7
+  enemyDrop:
+  - {fileID: 7964663760538592516, guid: ba05df46b1cf0e585ae4ba2337365f1c, type: 3}
+  - {fileID: 5294402461180281228, guid: 8bf37830918c96b31b10a21af32361e5, type: 3}
 --- !u!114 &2714032743961457157
 MonoBehaviour:
   m_ObjectHideFlags: 0

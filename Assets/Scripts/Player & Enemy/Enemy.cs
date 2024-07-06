@@ -1,6 +1,7 @@
+using System;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
@@ -9,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float initialHealth;
     [SerializeField] private float InitialAttackDelay;
     [SerializeField] private float InitialAttackDamage;
+    [SerializeField] private GameObject[] enemyDrop;
     private float speed;
     private float health;
     private float attackDelay;
@@ -74,16 +76,20 @@ public class Enemy : MonoBehaviour
         PlayerController playerController = Player.GetComponent<PlayerController>();
         playerController.receiveDamage(attackDamage);
     }
-    public void Damage(int damage)
+    public bool Damage(int damage)
     {
         health -= damage;
         setHealthBar();
         if (health <= 0)
         {
-            manager.GetComponent<KillCounter>().Kill();
+            DropRandomItem();
+            Freeze();
+            attackDamage = 0;
             animator.SetTrigger("Death");
             StartCoroutine(animationDelay());
+            return true;
         }
+        return false;
     }
     IEnumerator animationDelay()
     {
@@ -106,6 +112,23 @@ public class Enemy : MonoBehaviour
         health *= 1.05f;
         setHealthBar();
         attackDamage *= 1.05f;
+    }
+    void DropRandomItem()
+    {
+        float chance = UnityEngine.Random.Range(0, 1f);
+        Debug.Log(chance);
+        if(0f < chance && chance < 0.07f)
+        {
+            Debug.Log("drop 0");
+            Instantiate(enemyDrop[0], gameObject.transform);
+
+        } else if (0.07f < chance && chance < 0.47f)
+        {
+            Debug.Log("drop 1");
+            Instantiate(enemyDrop[1], new Vector3(transform.position.x, transform.position.y, -2), quaternion.identity);
+        } else {
+            Debug.Log("Unlucky");
+        }
     }
     void OnTriggerEnter2D(Collider2D collider)
     {

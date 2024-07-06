@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    void Awake()
+    {
+        VariableInitialization();
+    }
     public void StartGame()
     {
         ServerManager.Instance.StartHost();
@@ -18,5 +22,25 @@ public class MainMenu : MonoBehaviour
     public void quitGame()
     {
         Application.Quit();
+    }
+
+    void VariableInitialization()
+    {
+        if(!PlayerPrefs.HasKey("Coin"))
+        {
+            PlayerPrefs.SetInt("Coin",0);
+        }
+        if(!PlayerPrefs.HasKey("WeaponCooldownLevel"))
+        {
+            PlayerPrefs.SetFloat("WeaponCooldownLevel",0);
+        }
+        if(!PlayerPrefs.HasKey("PlayerSpeedLevel"))
+        {
+            PlayerPrefs.SetFloat("PlayerSpeedLevel",0);
+        }
+        if(!PlayerPrefs.HasKey("WeaponDamageLevel"))
+        {
+            PlayerPrefs.SetFloat("WeaponDamageLevel",0);
+        }
     }
 }

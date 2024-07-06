@@ -110,6 +110,11 @@ public class WorldGenerator : MonoBehaviour
                 Vector3 position = new Vector3(xPosition, yPosition, 0);
                 Instantiate(obstacles[2], position, Quaternion.identity, obstaclesGroup.transform);
             }
+            else if(0.15 < chance && chance < 0.55)
+            {
+                Vector3 position = new Vector3(xPosition, yPosition, 0);
+                Instantiate(obstacles[3], position, Quaternion.identity, obstaclesGroup.transform);
+            }
         }
     }
 }

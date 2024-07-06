@@ -1,21 +1,24 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    [SerializeField] float timetoattack = 3f;
+    [SerializeField] float initialTimeToAttack;
     [SerializeField] GameObject rigthWeapon;
     [SerializeField] GameObject leftWeapon;
     [SerializeField] Vector2 powerOfAttack = new Vector2(4f, 2f);
-    [SerializeField] int weaponDamage = 1;
+    [SerializeField] int initialWeaponDamage;
+    float timetoattack;
+    int weaponDamage;
     SpriteRenderer spriteRenderer;
     Animator animator;
+    private GameObject gameManager;
     private void Awake()
     {
         spriteRenderer = GetComponentInParent<SpriteRenderer>();
         animator = GetComponentInParent<Animator>();
+        weaponDamage = initialWeaponDamage;
+        timetoattack = initialTimeToAttack;
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
     }
 
     void Start()
@@ -49,7 +52,10 @@ public class WeaponController : MonoBehaviour
         {
             if (colliders[i].GetComponent<Enemy>() != null)
             {
-                colliders[i].GetComponent<Enemy>().Damage(weaponDamage);
+                if(colliders[i].GetComponent<Enemy>().Damage(weaponDamage))
+                {
+                    gameManager.GetComponent<KillCounter>().Kill();
+                }
             }
         }
     }

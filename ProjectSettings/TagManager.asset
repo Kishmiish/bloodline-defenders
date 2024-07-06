@@ -7,6 +7,11 @@ TagManager:
   - Dead
   - WorldGenerator
   - PlayerParent
+  - HP
+  - XP
+  - XPBar
+  - CoinCounter
+  - Coin
   layers:
   - Default
   - TransparentFX

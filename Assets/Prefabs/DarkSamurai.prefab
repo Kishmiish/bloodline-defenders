@@ -417,7 +417,7 @@ MonoBehaviour:
   SyncScaleY: 1
   SyncScaleZ: 1
   PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
+  RotAngleThreshold: 1
   ScaleThreshold: 0.01
   UseQuaternionSynchronization: 0
   UseQuaternionCompression: 0
@@ -821,11 +821,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59a30db2a3c82427bfbe8d8c827bda4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timetoattack: 3
+  initialTimeToAttack: 2
   rigthWeapon: {fileID: 1754427427090257101}
   leftWeapon: {fileID: 4927629532981116820}
   powerOfAttack: {x: 3, y: 2}
-  weaponDamage: 1
+  initialWeaponDamage: 5
 --- !u!1 &5635744994040991520
 GameObject:
   m_ObjectHideFlags: 0

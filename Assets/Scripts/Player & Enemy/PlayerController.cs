@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private Slider healthBar;
-    float health = 100;
+    float maxHealth = 100;
+    float health;
+    int XP;
+    int nextLevelXP;
 
     [HideInInspector]
     Animator animator;
@@ -20,13 +20,22 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     SpriteRenderer spriteRenderer;
     private WeaponController weaponController;
+    private Slider XPBar;
+    private TMP_Text coinCounter;
     
     void Start()
     {
+        health = maxHealth;
+        SetMaxHealthBar();
+        XP = 0;
+        nextLevelXP = 5;
+        coinCounter = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<TMP_Text>();
+        SetCoin();
         animator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         weaponController = GetComponentInChildren<WeaponController>();
+        XPBar = GameObject.FindGameObjectWithTag("XPBar").GetComponent<Slider>();
     }
 
     
@@ -52,6 +61,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void SetMaxHealthBar()
+    {
+        healthBar.maxValue = maxHealth;
+    }
     void SetHealthBar()
     {
         healthBar.value = health;
@@ -89,5 +102,42 @@ public class PlayerController : MonoBehaviour
         GetComponent<PlayerMovement>().enabled = false;
         GetComponentInChildren<WeaponController>().CancelInvoke();
         GameObject.Find("Weapon").SetActive(false);
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "XP")
+        {
+            XP++;
+            XPBar.value = XP;
+            if(XP == nextLevelXP)
+            {
+                LevelUp();
+            }
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.tag == "HP")
+        {
+            health++;
+            SetHealthBar();
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.tag == "Coin")
+        {
+            PlayerPrefs.SetInt("Coin",PlayerPrefs.GetInt("Coin") + 1);
+            Destroy(collision.gameObject);
+            SetCoin();
+        }
+    }
+    void LevelUp()
+    {
+        maxHealth *= 1.1f;
+        SetMaxHealthBar();
+        XP = 0;
+        XPBar.value = XP;
+        nextLevelXP = nextLevelXP * 3 / 2;
+        XPBar.maxValue = nextLevelXP;
+    }
+
+    void SetCoin()
+    {
+        coinCounter.text = ": " + PlayerPrefs.GetInt("Coin");
     }
 }
