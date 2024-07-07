@@ -1785,6 +1785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596617933544a1383b307aeb09fa12c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkManager: {fileID: 778478282}
 --- !u!81 &788108963
 AudioListener:
   m_ObjectHideFlags: 0

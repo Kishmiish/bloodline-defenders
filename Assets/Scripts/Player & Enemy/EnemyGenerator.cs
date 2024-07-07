@@ -23,7 +23,7 @@ public class EnemyGenerator : NetworkBehaviour
     {
         if(IsHost || IsServer)
         {
-            InvokeRepeating(nameof(GenerateEnemyForPlayers),spawnInterval,spawnInterval);
+            InvokeRepeating(nameof(GenerateEnemyForPlayers),0,spawnInterval);
         }
     }
 

@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);
         if(NetworkManager.Singleton.IsHost){
-            NetworkManager.Singleton.Shutdown();
+            ServerManager.Instance.StopHost();
         }
         SceneManager.LoadScene("Menu");
     }

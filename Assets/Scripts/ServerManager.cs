@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ServerManager : MonoBehaviour
 {
+    [SerializeField] private GameObject networkManager;
     public static ServerManager Instance{get; private set;}
     public Dictionary<ulong, ClientData> ClientData {get; private set;}
     private bool gameHasStarted;
@@ -89,9 +89,19 @@ public class ServerManager : MonoBehaviour
     }
 
     public void StopHost()
-    {        
-        NetworkManager.Singleton.ConnectionApprovalCallback -= ApprovalCheck;
-        NetworkManager.Singleton.OnServerStarted -= OnNetworkReady;
-        NetworkManager.Singleton.Shutdown();
+    {
+        if(NetworkManager.Singleton != null)
+        {
+            if(NetworkManager.Singleton.IsHost)
+            {
+                NetworkManager.Singleton.ConnectionApprovalCallback -= ApprovalCheck;
+                NetworkManager.Singleton.OnServerStarted -= OnNetworkReady;
+                NetworkManager.Singleton.OnClientDisconnectCallback -= OnClinetDisconnect;
+                NetworkManager.Singleton.Shutdown();
+                Destroy(gameObject);
+                Destroy(networkManager);
+                //ClientData.Clear();
+            }
+        }
     }
 }

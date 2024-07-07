@@ -11,6 +11,7 @@ public class CharacterSpawner : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         if(!IsServer) { return; }
+        Debug.Log(ServerManager.Instance.ClientData.Count);
         foreach (var client in ServerManager.Instance.ClientData)
         {
             var character = characterDatabase.GetCharacterById(client.Value.characterId);

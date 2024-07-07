@@ -119,7 +119,7 @@ public class CharacterSelectDisplay : NetworkBehaviour
         {
             ServerManager.Instance.SetCharacter(player.ClientId, player.CharacterId);
         }
-
+        characterInfoPanel.SetActive(false);
         ServerManager.Instance.StartGame();
     }
 }
