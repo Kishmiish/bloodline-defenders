@@ -8,8 +8,8 @@ public class ObstacleController : MonoBehaviour
 {
     private GameObject[] players;
     private GameObject[] deadPlayers;
-    [SerializeField] private int chunkSize = 20;
-    [SerializeField] private float delayTime = 3f;
+    static private int chunkSize = 60;
+    private float delayTime = 3f;
     void Start(){
         InvokeRepeating(nameof(ObjectDestruction), delayTime, delayTime);
     }

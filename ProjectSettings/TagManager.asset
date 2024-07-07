@@ -12,6 +12,7 @@ TagManager:
   - XPBar
   - CoinCounter
   - Coin
+  - SeedSyncer
   layers:
   - Default
   - TransparentFX

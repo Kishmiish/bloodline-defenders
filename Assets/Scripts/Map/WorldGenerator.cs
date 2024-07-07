@@ -13,17 +13,17 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField] private GameObject obstaclesGroup;
     [SerializeField] private GameObject[] obstacles;
     [SerializeField] private float magnification = 10f;
-    [SerializeField] private int chunkSize = 20;
-    [SerializeField] private int xOffset = 0;
-    [SerializeField] private int yOffset = 0;
     [SerializeField] private float delayTime = 1f;
+    static private int chunkSize = 60;
+    private int xOffset = 0;
+    private int yOffset = 0;
 
     private GameObject[] players;
     private GameObject[] deadPlayers;
     
 
     void Awake(){
-        UnityEngine.Random.InitState(2000);
+        UnityEngine.Random.InitState(GameObject.FindGameObjectWithTag("SeedSyncer").GetComponent<SeedSync>().GetRandomSeed());
         GenerateChunk(0,0);
     }
 

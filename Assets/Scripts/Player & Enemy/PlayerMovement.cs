@@ -20,6 +20,7 @@ public class PlayerMovement : NetworkBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        InitializeSpeed();
     }
 
     void Update()
@@ -52,5 +53,13 @@ public class PlayerMovement : NetworkBehaviour
     {
         transform.Translate(moveDirection.x * speed, moveDirection.y * speed, 0);
         //rb.velocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);
+    }
+    void InitializeSpeed()
+    {
+        int level = PlayerPrefs.GetInt("PlayerSpeedLevel");
+        for (int i = 0; i < level; i++)
+        {
+            speed *= 1.1f;
+        }
     }
 }

@@ -42,5 +42,9 @@ public class MainMenu : MonoBehaviour
         {
             PlayerPrefs.SetFloat("WeaponDamageLevel",0);
         }
+        if(!PlayerPrefs.HasKey("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore",0);
+        }
     }
 }

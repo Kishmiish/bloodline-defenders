@@ -5,19 +5,29 @@ public class WeaponController : MonoBehaviour
     [SerializeField] float initialTimeToAttack;
     [SerializeField] GameObject rigthWeapon;
     [SerializeField] GameObject leftWeapon;
-    [SerializeField] Vector2 powerOfAttack = new Vector2(4f, 2f);
-    [SerializeField] int initialWeaponDamage;
+    [SerializeField] Vector2 AttackRange = new Vector2(4f, 2f);
+    [SerializeField] float initialWeaponDamage;
     float timetoattack;
-    int weaponDamage;
+    float weaponDamage;
     SpriteRenderer spriteRenderer;
     Animator animator;
     private GameObject gameManager;
+
+    public float GetInitialTimeToAttack()
+    {
+        return initialTimeToAttack;
+    }
+    public float GetInitialWeaponDamage()
+    {
+        return weaponDamage;
+    }
     private void Awake()
     {
         spriteRenderer = GetComponentInParent<SpriteRenderer>();
         animator = GetComponentInParent<Animator>();
         weaponDamage = initialWeaponDamage;
         timetoattack = initialTimeToAttack;
+        InitializeValue();
         gameManager = GameObject.FindGameObjectWithTag("GameController");
     }
 
@@ -25,12 +35,20 @@ public class WeaponController : MonoBehaviour
     {
         InvokeRepeating(nameof(AttackAnimation),timetoattack,timetoattack);
     }
-    private void AttackAnimation(){
+    void Update()
+    {
+        if(spriteRenderer == null) { spriteRenderer = GetComponentInParent<SpriteRenderer>(); }
+        if(animator == null) { animator = GetComponentInParent<Animator>(); }
+        if(gameManager == null) { gameManager = GameObject.FindGameObjectWithTag("GameController"); }
+    }
+    private void AttackAnimation()
+    {
+
         animator.SetTrigger("Attack");
     }
     public void Attack() {
         if (spriteRenderer.flipX == false) {
-            Collider2D[] colliders =  Physics2D.OverlapBoxAll(rigthWeapon.transform.position, powerOfAttack, 0f);
+            Collider2D[] colliders =  Physics2D.OverlapBoxAll(rigthWeapon.transform.position, AttackRange, 0f);
             if(colliders.Length > 0)
             {
                 ApplyDamage(colliders);
@@ -38,7 +56,7 @@ public class WeaponController : MonoBehaviour
         }
         else
         {
-            Collider2D[] colliders = Physics2D.OverlapBoxAll(leftWeapon.transform.position, powerOfAttack, 0f);
+            Collider2D[] colliders = Physics2D.OverlapBoxAll(leftWeapon.transform.position, AttackRange, 0f);
             if(colliders.Length > 0)
             {
                 ApplyDamage(colliders);
@@ -57,6 +75,25 @@ public class WeaponController : MonoBehaviour
                     gameManager.GetComponent<KillCounter>().Kill();
                 }
             }
+        }
+    }
+
+    public void LevelUp()
+    {
+        weaponDamage++;
+    }
+
+    void InitializeValue()
+    {
+        int damageLevel = PlayerPrefs.GetInt("WeaponDamageLeve");
+        int cooldownLevel = PlayerPrefs.GetInt("WeaponCooldownLevel");
+        for (int i = 0; i < damageLevel; i++)
+        {
+            weaponDamage *= 1.1f;
+        }
+        for (int i = 0; i < cooldownLevel; i++)
+        {
+            timetoattack *= 0.95f;
         }
     }
 }

@@ -8,7 +8,7 @@ public class EnemyGenerator : NetworkBehaviour
     [SerializeField] private float minRadius;
     [SerializeField] private float maxRadius;
     [SerializeField] private Enemy enemy;
-    [SerializeField] private float spawnInterval = 1f;
+    static private float spawnInterval = 1.2f;
     private GameObject[] players;
     private float angle;
     private float distance;

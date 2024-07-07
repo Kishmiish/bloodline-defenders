@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private EnemyGenerator[] enemyGenerators;
+    [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private TMP_Text yourScore;
+    [SerializeField] private TMP_Text highScore;
     public bool isPlayerAlive;
     private int currentLevel;
     private int prevLevel;
@@ -50,7 +55,25 @@ public class GameManager : MonoBehaviour
         foreach(EnemyGenerator enemyGenerator in enemyGenerators)
         {
             enemyGenerator.CancelInvoke();
+
         }
+        yourScore.text = GetComponent<KillCounter>().GetKillCount().ToString();
+        highScore.text = PlayerPrefs.GetInt("HighScore").ToString();
+        gameOverMenu.SetActive(true);
+    }
+
+    public void Quit()
+    {
+        if(GetComponent<KillCounter>().GetKillCount() > PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", GetComponent<KillCounter>().GetKillCount());
+        }
+        pauseMenu.SetActive(false);
+        gameOverMenu.SetActive(false);
+        if(NetworkManager.Singleton.IsHost){
+            NetworkManager.Singleton.Shutdown();
+        }
+        SceneManager.LoadScene("Menu");
     }
 
     void IncreaseDifficulty()

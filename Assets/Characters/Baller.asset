@@ -16,3 +16,4 @@ MonoBehaviour:
   displayName: Baller
   icon: {fileID: 70355983, guid: 6eb1c3e89aca58c92a2f10733bb5c7b6, type: 3}
   gameplayPrefab: {fileID: 4963864621168613259, guid: 28926a0797668023cb4f2fdbb19cdbae, type: 3}
+  weaponIcon: {fileID: 812588630, guid: 8eb31c4d9453c225e9b52e8f9d7e5f8e, type: 3}

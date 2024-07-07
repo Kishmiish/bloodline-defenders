@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private Slider healthBar;
-    float maxHealth = 100;
+    [SerializeField] private AudioSource weaponEffect;
+    [SerializeField] float maxHealth = 100;
     float health;
     int XP;
     int nextLevelXP;
@@ -23,6 +25,10 @@ public class PlayerController : MonoBehaviour
     private Slider XPBar;
     private TMP_Text coinCounter;
     
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
     void Start()
     {
         health = maxHealth;
@@ -41,6 +47,12 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+        if(animator == null) { animator = GetComponent<Animator>(); }
+        if(playerMovement == null) { playerMovement = GetComponent<PlayerMovement>(); }
+        if(spriteRenderer == null) { spriteRenderer = GetComponent<SpriteRenderer>(); }
+        if(weaponController == null) { weaponController = GetComponentInChildren<WeaponController>(); }
+        if(coinCounter == null) { coinCounter = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<TMP_Text>(); }
+        if(XPBar == null) { XPBar = GameObject.FindGameObjectWithTag("XPBar").GetComponent<Slider>(); }
         if (playerMovement.moveDirection.x != 0 || playerMovement.moveDirection.y != 0) {
             animator.SetBool("Move", true);
             SpriteDirectionChecker();
@@ -60,7 +72,6 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
-
     void SetMaxHealthBar()
     {
         healthBar.maxValue = maxHealth;
@@ -86,6 +97,7 @@ public class PlayerController : MonoBehaviour
 
     public void DealDamage()
     {
+        weaponEffect.Play();
         weaponController.Attack();
     }
 
@@ -103,7 +115,7 @@ public class PlayerController : MonoBehaviour
         GetComponentInChildren<WeaponController>().CancelInvoke();
         GameObject.Find("Weapon").SetActive(false);
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "XP")
         {
@@ -116,7 +128,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         } else if (collision.gameObject.tag == "HP")
         {
-            health++;
+            health += 10;  
             SetHealthBar();
             Destroy(collision.gameObject);
         } else if (collision.gameObject.tag == "Coin")
@@ -129,6 +141,7 @@ public class PlayerController : MonoBehaviour
     void LevelUp()
     {
         maxHealth *= 1.1f;
+        weaponController.LevelUp();
         SetMaxHealthBar();
         XP = 0;
         XPBar.value = XP;
@@ -138,6 +151,7 @@ public class PlayerController : MonoBehaviour
 
     void SetCoin()
     {
+        if(coinCounter == null) { coinCounter = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<TMP_Text>(); }
         coinCounter.text = ": " + PlayerPrefs.GetInt("Coin");
     }
 }

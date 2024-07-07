@@ -13,6 +13,7 @@ public class PlayfabManager : MonoBehaviour
     [SerializeField] private TMP_Text messageText;
     [SerializeField] private TMP_InputField emailInput;
     [SerializeField] private TMP_InputField password;
+    [HideInInspector] public bool isOnline;
 
     public void RegisterButton()
     {
@@ -26,6 +27,7 @@ public class PlayfabManager : MonoBehaviour
 
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
+        isOnline = true;
         SceneManager.LoadScene("Menu");
     }
 
@@ -41,11 +43,18 @@ public class PlayfabManager : MonoBehaviour
 
     void OnLoginSuccess(LoginResult result)
     {
+        isOnline = true;
         SceneManager.LoadScene("Menu");
     }
 
     void OnError(PlayFabError error)
     {
         messageText.text = error.GenerateErrorReport();
+    }
+
+    public void OfflinePlay()
+    {
+        isOnline = false;
+        SceneManager.LoadScene("Menu");
     }
 }

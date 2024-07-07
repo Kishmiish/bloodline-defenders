@@ -16,3 +16,4 @@ MonoBehaviour:
   displayName: Samurai
   icon: {fileID: -922443490, guid: 9524564c95e79c56bb76298a4e25e397, type: 3}
   gameplayPrefab: {fileID: 4963864621168613259, guid: aa3a9dc108a3066d9b00cc60cc74d296, type: 3}
+  weaponIcon: {fileID: -2013170365, guid: 8eb31c4d9453c225e9b52e8f9d7e5f8e, type: 3}

@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using Unity.Mathematics;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : NetworkBehaviour
 {
     [SerializeField] private float initialSpeed;
     [SerializeField] private float initialHealth;
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rigidBody2D;
     private Vector3 currentPosition;
     private Animator animator;
+    public NetworkObject obejctToDestroy;
     void Awake()
     {
         ResetValues();
@@ -76,7 +78,7 @@ public class Enemy : MonoBehaviour
         PlayerController playerController = Player.GetComponent<PlayerController>();
         playerController.receiveDamage(attackDamage);
     }
-    public bool Damage(int damage)
+    public bool Damage(float damage)
     {
         health -= damage;
         setHealthBar();
@@ -86,6 +88,7 @@ public class Enemy : MonoBehaviour
             Freeze();
             attackDamage = 0;
             animator.SetTrigger("Death");
+            obejctToDestroy = this.NetworkObject;
             StartCoroutine(animationDelay());
             return true;
         }
@@ -94,7 +97,21 @@ public class Enemy : MonoBehaviour
     IEnumerator animationDelay()
     {
         yield return new WaitForSeconds(0.7f);
-        Destroy(gameObject);
+        if(IsOwner){
+            DestroyObjectServerRpc();
+        }
+    }
+    [ServerRpc]
+    public void DestroyObjectServerRpc()
+    {
+        if(IsServer)
+        {
+            if(obejctToDestroy != null)
+            {
+                obejctToDestroy.Despawn();
+                Destroy(obejctToDestroy.gameObject);
+            }
+        }
     }
     public void Freeze(){
         rigidBody2D.velocity = Vector2.zero;
@@ -116,18 +133,12 @@ public class Enemy : MonoBehaviour
     void DropRandomItem()
     {
         float chance = UnityEngine.Random.Range(0, 1f);
-        Debug.Log(chance);
         if(0f < chance && chance < 0.07f)
         {
-            Debug.Log("drop 0");
-            Instantiate(enemyDrop[0], gameObject.transform);
-
+            Instantiate(enemyDrop[0], new Vector3(transform.position.x, transform.position.y, -2), quaternion.identity);
         } else if (0.07f < chance && chance < 0.47f)
         {
-            Debug.Log("drop 1");
             Instantiate(enemyDrop[1], new Vector3(transform.position.x, transform.position.y, -2), quaternion.identity);
-        } else {
-            Debug.Log("Unlucky");
         }
     }
     void OnTriggerEnter2D(Collider2D collider)

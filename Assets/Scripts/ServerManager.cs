@@ -11,7 +11,6 @@ public class ServerManager : MonoBehaviour
     public Dictionary<ulong, ClientData> ClientData {get; private set;}
     private bool gameHasStarted;
 
-
     private void Awake()
     {
         if(Instance != null && Instance != this)
@@ -87,5 +86,12 @@ public class ServerManager : MonoBehaviour
     public void StartClient()
     {
         NetworkManager.Singleton.StartClient();
+    }
+
+    public void StopHost()
+    {        
+        NetworkManager.Singleton.ConnectionApprovalCallback -= ApprovalCheck;
+        NetworkManager.Singleton.OnServerStarted -= OnNetworkReady;
+        NetworkManager.Singleton.Shutdown();
     }
 }

@@ -11,6 +11,7 @@ public class CharacterSelectDisplay : NetworkBehaviour
     [SerializeField] private Transform characterHolder;
     [SerializeField] private CharacterSelectButton selectButtonPrefab;
     [SerializeField] private PlayerCard[] playerCards;
+    [SerializeField] private CharacterInfo characterInfo;
     [SerializeField] private GameObject characterInfoPanel;
     [SerializeField] private TMP_Text characterNameText;
 
@@ -81,6 +82,7 @@ public class CharacterSelectDisplay : NetworkBehaviour
     {
         characterNameText.text = character.DisplayName;
         characterInfoPanel.SetActive(true);
+        characterInfo.UpdateDisplay(character);
         SelectServerRpc(character.Id);
     }
 
