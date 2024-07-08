@@ -354,8 +354,8 @@ GameObject:
   - component: {fileID: 2224437366840322230}
   - component: {fileID: 2847711894113295487}
   - component: {fileID: 1605930561555968960}
-  - component: {fileID: 7139003850883595387}
   - component: {fileID: 5141845991053697115}
+  - component: {fileID: 7139003850883595387}
   - component: {fileID: -183963886339633021}
   m_Layer: 0
   m_Name: Bat
@@ -515,25 +515,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7139003850883595387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7130604333466009090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf176a8208f5d740b747e42aa87a9ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialSpeed: 1
-  initialHealth: 3
-  InitialAttackDelay: 0.5
-  InitialAttackDamage: 2
-  enemyDrop:
-  - {fileID: 7964663760538592516, guid: ba05df46b1cf0e585ae4ba2337365f1c, type: 3}
-  - {fileID: 5294402461180281228, guid: 8bf37830918c96b31b10a21af32361e5, type: 3}
 --- !u!114 &5141845991053697115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,6 +536,26 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &7139003850883595387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7130604333466009090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf176a8208f5d740b747e42aa87a9ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialSpeed: 1
+  initialHealth: 3
+  InitialAttackDelay: 0.5
+  InitialAttackDamage: 2
+  enemyDrop:
+  - {fileID: 7964663760538592516, guid: ba05df46b1cf0e585ae4ba2337365f1c, type: 3}
+  - {fileID: 5294402461180281228, guid: 8bf37830918c96b31b10a21af32361e5, type: 3}
+  obejctToDestroy: {fileID: 0}
 --- !u!114 &-183963886339633021
 MonoBehaviour:
   m_ObjectHideFlags: 0

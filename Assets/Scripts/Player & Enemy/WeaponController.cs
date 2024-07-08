@@ -19,7 +19,7 @@ public class WeaponController : MonoBehaviour
     }
     public float GetInitialWeaponDamage()
     {
-        return weaponDamage;
+        return initialWeaponDamage;
     }
     private void Awake()
     {

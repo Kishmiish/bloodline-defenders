@@ -1358,7 +1358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 675.2, y: -165}
+  m_AnchoredPosition: {x: 675.2, y: -220.45}
   m_SizeDelta: {x: 136.523, y: 136.523}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &693638634
@@ -1806,7 +1806,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.5
+  m_PixelsPerUnitMultiplier: 0.25
 --- !u!222 &821020154
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2114,7 +2114,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.5
+  m_PixelsPerUnitMultiplier: 0.25
 --- !u!222 &1103873776
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2291,8 +2291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.718, y: -438.98874}
-  m_SizeDelta: {x: 1900.137, y: 160.271}
+  m_AnchoredPosition: {x: -2.718, y: -433.756}
+  m_SizeDelta: {x: 1900.137, y: 170.736}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1196670935
 MonoBehaviour:
@@ -2323,7 +2323,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.5
+  m_PixelsPerUnitMultiplier: 0.25
 --- !u!222 &1196670936
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2742,8 +2742,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.7217476, y: -438.99}
-  m_SizeDelta: {x: 1900.1, y: 160.27}
+  m_AnchoredPosition: {x: -2.7217476, y: -433.76}
+  m_SizeDelta: {x: 1900.1, y: 170.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060663972
 MonoBehaviour:
@@ -2762,10 +2762,10 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 75, y: 75}
+  m_CellSize: {x: 150, y: 150}
   m_Spacing: {x: 25, y: 25}
   m_Constraint: 1
   m_ConstraintCount: 5

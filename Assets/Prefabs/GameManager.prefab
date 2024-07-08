@@ -47,7 +47,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
-  enemyGenerator: {fileID: 0}
+  enemyGenerators:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  gameOverMenu: {fileID: 0}
+  yourScore: {fileID: 0}
+  highScore: {fileID: 0}
   isPlayerAlive: 0
 --- !u!114 &2685480005508322532
 MonoBehaviour:

@@ -13,6 +13,8 @@ TagManager:
   - CoinCounter
   - Coin
   - SeedSyncer
+  - PlayfabManager
+  - GameOver
   layers:
   - Default
   - TransparentFX
