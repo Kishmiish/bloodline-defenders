@@ -137,6 +137,21 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             SetCoin();
         }
+        else if (collision.gameObject.tag == "silvercoin")
+        {
+            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 1);
+            health += 5;
+            SetHealthBar();
+            Destroy(collision.gameObject);
+            SetCoin();
+        }
+        else if (collision.gameObject.tag == "manycoins")
+        {
+            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 10);
+            
+            Destroy(collision.gameObject);
+            SetCoin();
+        }
     }
     void LevelUp()
     {

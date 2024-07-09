@@ -13,6 +13,8 @@ TagManager:
   - CoinCounter
   - Coin
   - SeedSyncer
+  - silvercoin
+  - manycoins
   layers:
   - Default
   - TransparentFX

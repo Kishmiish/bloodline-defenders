@@ -133,12 +133,20 @@ public class Enemy : NetworkBehaviour
     void DropRandomItem()
     {
         float chance = UnityEngine.Random.Range(0, 1f);
-        if(0f < chance && chance < 0.07f)
+         if (0f < chance && chance < 0.018f)//many coins
+        {
+            Instantiate(enemyDrop[3], new Vector3(transform.position.x, transform.position.y, -2), quaternion.identity);
+        }
+       else if (0.018f < chance && chance < 0.079f)
         {
             Instantiate(enemyDrop[0], new Vector3(transform.position.x, transform.position.y, -2), quaternion.identity);
-        } else if (0.07f < chance && chance < 0.47f)
+        } else if (0.079f < chance && chance < 0.27f)
         {
             Instantiate(enemyDrop[1], new Vector3(transform.position.x, transform.position.y, -2), quaternion.identity);
+        }
+        else if (0.27f < chance && chance < 0.47f)//silvercoin
+        {
+            Instantiate(enemyDrop[2], new Vector3(transform.position.x, transform.position.y, -2), quaternion.identity);
         }
     }
     void OnTriggerEnter2D(Collider2D collider)
