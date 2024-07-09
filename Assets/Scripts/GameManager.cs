@@ -9,8 +9,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private EnemyGenerator[] enemyGenerators;
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private EnemyGenerator[] enemyGenerators;
     [SerializeField] private TMP_Text yourScore;
     [SerializeField] private TMP_Text highScore;
     public bool isPlayerAlive;
@@ -40,8 +40,11 @@ public class GameManager : MonoBehaviour
 
     void pause()
     {
-        Time.timeScale = 0f;
         pauseMenu.SetActive(true);
+        if(ServerManager.Instance.ClientData.Count == 1)
+        {
+            Time.timeScale = 0f;
+        }
     }
 
     public void unPause()
@@ -52,14 +55,13 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(){
         isPlayerAlive = false;
+        gameOverMenu.SetActive(true);
         foreach(EnemyGenerator enemyGenerator in enemyGenerators)
         {
             enemyGenerator.CancelInvoke();
-
         }
         yourScore.text = GetComponent<KillCounter>().GetKillCount().ToString();
         highScore.text = PlayerPrefs.GetInt("HighScore").ToString();
-        gameOverMenu.SetActive(true);
     }
 
     public void Quit()
@@ -70,9 +72,15 @@ public class GameManager : MonoBehaviour
         }
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);
-        if(NetworkManager.Singleton.IsHost){
+        if(NetworkManager.Singleton.IsHost)
+        {
             ServerManager.Instance.StopHost();
+        } else if (NetworkManager.Singleton.IsClient)
+        {
+            ServerManager.Instance.StopClient();   
         }
+        Time.timeScale = 1f;
+        Destroy(GameObject.FindGameObjectWithTag("SeedSyncer"));
         SceneManager.LoadScene("Menu");
     }
 

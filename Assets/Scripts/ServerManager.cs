@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ServerManager : MonoBehaviour
 {
     [SerializeField] private GameObject networkManager;
+    [SerializeField] private SeedSync seedSync;
     public static ServerManager Instance{get; private set;}
     public Dictionary<ulong, ClientData> ClientData {get; private set;}
     private bool gameHasStarted;
@@ -94,14 +95,31 @@ public class ServerManager : MonoBehaviour
         {
             if(NetworkManager.Singleton.IsHost)
             {
+                seedSync.StopClientRPC();
                 NetworkManager.Singleton.ConnectionApprovalCallback -= ApprovalCheck;
                 NetworkManager.Singleton.OnServerStarted -= OnNetworkReady;
                 NetworkManager.Singleton.OnClientDisconnectCallback -= OnClinetDisconnect;
-                NetworkManager.Singleton.Shutdown();
-                Destroy(gameObject);
-                Destroy(networkManager);
-                //ClientData.Clear();
+                StartCoroutine(DelayedHostShutdown());
             }
+        }
+    }
+    private IEnumerator DelayedHostShutdown()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+        Destroy(networkManager);
+        NetworkManager.Singleton.Shutdown();
+    }
+    public void StopClient()
+    {
+        if(NetworkManager.Singleton != null)
+        {
+            NetworkManager.Singleton.ConnectionApprovalCallback -= ApprovalCheck;
+            NetworkManager.Singleton.OnServerStarted -= OnNetworkReady;
+            NetworkManager.Singleton.OnClientDisconnectCallback -= OnClinetDisconnect;
+            NetworkManager.Singleton.Shutdown();
+            Destroy(gameObject);
+            Destroy(networkManager);
         }
     }
 }

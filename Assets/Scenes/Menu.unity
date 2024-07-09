@@ -1786,6 +1786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkManager: {fileID: 778478282}
+  seedSync: {fileID: 178041475}
 --- !u!81 &788108963
 AudioListener:
   m_ObjectHideFlags: 0
