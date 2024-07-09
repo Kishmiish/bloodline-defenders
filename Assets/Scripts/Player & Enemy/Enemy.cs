@@ -137,7 +137,7 @@ public class Enemy : NetworkBehaviour
         {
             Instantiate(enemyDrop[3], new Vector3(transform.position.x, transform.position.y, -2), quaternion.identity);
         }
-       else if (0.018f < chance && chance < 0.079f)
+       else if (0.0181f < chance && chance < 0.079f)
         {
             Instantiate(enemyDrop[0], new Vector3(transform.position.x, transform.position.y, -2), quaternion.identity);
         } else if (0.079f < chance && chance < 0.27f)
