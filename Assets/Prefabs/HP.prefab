@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3517234414255754980}
   - component: {fileID: 2486637861630599908}
   - component: {fileID: 1609294414732278270}
+  - component: {fileID: -8884627924132073987}
   m_Layer: 0
   m_Name: HP
   m_TagString: HP
@@ -120,3 +121,15 @@ CircleCollider2D:
   m_Offset: {x: -0.00030744076, y: 0.003543806}
   serializedVersion: 2
   m_Radius: 0.052128576
+--- !u!114 &-8884627924132073987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964663760538592516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd89123826ce942de8060a83a9815ed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

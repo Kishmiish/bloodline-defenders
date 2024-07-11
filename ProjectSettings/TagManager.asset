@@ -4,22 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Dead
-  - WorldGenerator
-  - PlayerParent
   - HP
   - XP
-  - XPBar
+  - manycoins
   - CoinCounter
+  - XPBar
+  - GameOver
   - Coin
   - SeedSyncer
-<<<<<<< HEAD
-  - silvercoin
-  - manycoins
-=======
-  - PlayfabManager
-  - GameOver
->>>>>>> ed8e6333a7557d08c6b096a380680992560c7a5c
+  - Dead
   layers:
   - Default
   - TransparentFX

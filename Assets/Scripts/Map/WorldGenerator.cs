@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
@@ -114,6 +115,11 @@ public class WorldGenerator : MonoBehaviour
             {
                 Vector3 position = new Vector3(xPosition, yPosition, 0);
                 Instantiate(obstacles[3], position, Quaternion.identity, obstaclesGroup.transform);
+            }
+            else if(0.55 < chance && chance < 0.75)
+            {
+                Vector3 position = new Vector3(xPosition, yPosition, 0);
+                Instantiate(obstacles[4], position, quaternion.identity, obstaclesGroup.transform);
             }
         }
     }

@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;
+    [SerializeField] float maxHealth = 100;
+    [SerializeField] private GameObject gameManager;
     [SerializeField] private Slider healthBar;
     [SerializeField] private AudioSource weaponEffect;
-    [SerializeField] float maxHealth = 100;
+    [SerializeField] private GameObject ring;
     float health;
     int XP;
     int nextLevelXP;
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour
         if(weaponController == null) { weaponController = GetComponentInChildren<WeaponController>(); }
         if(coinCounter == null) { coinCounter = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<TMP_Text>(); }
         if(XPBar == null) { XPBar = GameObject.FindGameObjectWithTag("XPBar").GetComponent<Slider>(); }
+        if(gameManager == null) { gameManager = GameObject.FindGameObjectWithTag("GameController"); }
         if (playerMovement.moveDirection.x != 0 || playerMovement.moveDirection.y != 0) {
             animator.SetBool("Move", true);
             SpriteDirectionChecker();
@@ -109,7 +111,7 @@ public class PlayerController : MonoBehaviour
         health = 0;
         SetHealthBar();
         tag = "Dead";
-        gameManager.GameOver();
+        gameManager.GetComponent<GameManager>().GameOver();
         gameObject.GetComponent<Collider2D>().enabled = false;
         GetComponent<PlayerMovement>().enabled = false;
         GetComponentInChildren<WeaponController>().CancelInvoke();
@@ -117,56 +119,64 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "XP")
-        {
-            XP++;
-            XPBar.value = XP;
-            if(XP == nextLevelXP)
+            if (collision.gameObject.tag == "silvercoin")
             {
-                LevelUp();
+                PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 1);
+                health += 5;
+                SetHealthBar();
+                Destroy(collision.gameObject);
+                SetCoin();
             }
-            Destroy(collision.gameObject);
-        } else if (collision.gameObject.tag == "HP")
+            else if (collision.gameObject.tag == "manycoins")
+            {
+                PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 10);
+                
+                Destroy(collision.gameObject);
+                SetCoin();
+            }
+        
+    }
+    public void IncreaseXP()
+    {
+        XP++;
+        XPBar.value = XP;
+        if(XP == nextLevelXP)
         {
-            health += 10;  
-            SetHealthBar();
-            Destroy(collision.gameObject);
-        } else if (collision.gameObject.tag == "Coin")
-        {
-            PlayerPrefs.SetInt("Coin",PlayerPrefs.GetInt("Coin") + 1);
-            Destroy(collision.gameObject);
-            SetCoin();
+            LevelUp();
         }
-        else if (collision.gameObject.tag == "silvercoin")
-        {
-            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 1);
-            health += 5;
-            SetHealthBar();
-            Destroy(collision.gameObject);
-            SetCoin();
-        }
-        else if (collision.gameObject.tag == "manycoins")
-        {
-            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 10);
-            
-            Destroy(collision.gameObject);
-            SetCoin();
-        }
+    }
+    public void IncreaseHealth()
+    {
+        health += 10;
+        SetHealthBar();
+    }
+    public void IncreaseCoin(int value)
+    {
+        PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + value);
+        SetCoin();
     }
     void LevelUp()
     {
-        maxHealth *= 1.1f;
-        weaponController.LevelUp();
-        SetMaxHealthBar();
-        XP = 0;
-        XPBar.value = XP;
+        gameManager.GetComponent<GameManager>().UpgradeMenu();
         nextLevelXP = nextLevelXP * 3 / 2;
+        XP = 0;
         XPBar.maxValue = nextLevelXP;
+        XPBar.value = XP;
     }
 
     void SetCoin()
     {
         if(coinCounter == null) { coinCounter = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<TMP_Text>(); }
         coinCounter.text = ": " + PlayerPrefs.GetInt("Coin");
+    }
+
+    public void EnableRing(bool condition)
+    {
+        ring.SetActive(condition);
+    }
+
+    public void LevelUpRing()
+    {
+        ring.GetComponent<RingOfDeath>().LevelUP();
     }
 }

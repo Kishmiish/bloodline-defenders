@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject upgradeMenu;
     [SerializeField] private EnemyGenerator[] enemyGenerators;
     [SerializeField] private TMP_Text yourScore;
     [SerializeField] private TMP_Text highScore;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     private float elpasedTime;
     void Start()
     {
+        upgradeMenu.SetActive(false);
         currentLevel = 0;
         prevLevel = currentLevel;
         isPlayerAlive = true;
@@ -35,6 +37,9 @@ public class GameManager : MonoBehaviour
         }
         if(Input.GetKey(KeyCode.Escape)){
             pause();
+        } else if (Input.GetKey(KeyCode.Tab))
+        {
+            upgradeMenu.SetActive(true);
         }
     }
 
@@ -97,5 +102,9 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    
+    public void UpgradeMenu()
+    {
+        if(ServerManager.Instance.ClientData.Count == 1) { Time.timeScale = 0f; }
+        upgradeMenu.SetActive(true);
+    }
 }

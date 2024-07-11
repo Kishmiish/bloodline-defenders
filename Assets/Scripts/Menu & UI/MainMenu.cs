@@ -46,5 +46,9 @@ public class MainMenu : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore",0);
         }
+        if(!PlayerPrefs.HasKey("PlayerTorchLevel"))
+        {
+            PlayerPrefs.SetInt("PlayerTorchLevel",0);
+        }
     }
 }

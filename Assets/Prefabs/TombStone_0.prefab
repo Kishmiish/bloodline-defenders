@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6104065352013012204}
   - component: {fileID: 2321646967510529137}
   - component: {fileID: 8068987370383046529}
+  - component: {fileID: 7527370050853947035}
   m_Layer: 0
   m_Name: TombStone_0
   m_TagString: Untagged
@@ -54,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -163,5 +164,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810b8057747efef60bacdbd23b1ee18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunkSize: 60
-  delayTime: 1
+--- !u!114 &7527370050853947035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596181412712272363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.07449529, y: 0.006238119, z: 0}
+  - {x: -0.07476456, y: 0.09114747, z: 0}
+  - {x: -0.038258765, y: 0.12964071, z: 0}
+  - {x: -0.0020656793, y: 0.13150029, z: 0}
+  - {x: 0.033658486, y: 0.09139404, z: 0}
+  - {x: 0.037255123, y: 0.006990354, z: 0}
+  m_ShapePathHash: -1934296128
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -121120
+  m_LocalBounds:
+    m_Center: {x: -0.018754717, y: 0.0688692, z: 0}
+    m_Extent: {x: 0.05600984, y: 0.062631086, z: 0}

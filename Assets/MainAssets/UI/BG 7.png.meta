@@ -222,6 +222,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Ring
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 740
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e2f065f545629c22b296afcebc0749f
+      internalID: 1599347677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magic
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 836
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6324b00c2c544b8b1e98f4bc63a6e8
+      internalID: 1892196915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Torch
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 516
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94c1bc9dade226e85a7d5f0a82f1f510
+      internalID: -154202010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -237,7 +300,10 @@ TextureImporter:
       Damage: 1025531933
       Health: 1192001417
       Katana: -2013170365
+      Magic: 1892196915
+      Ring: 1599347677
       Speed: -240433638
+      Torch: -154202010
       Whip: 812588630
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

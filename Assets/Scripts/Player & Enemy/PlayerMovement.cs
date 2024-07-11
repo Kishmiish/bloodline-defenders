@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMovement : NetworkBehaviour
 {
     public float speed;
+    public bool IsLocal => IsOwner;
     
     [HideInInspector]
     public float lastHorizontalVector;

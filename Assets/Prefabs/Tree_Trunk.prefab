@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 981428783124589016}
   - component: {fileID: 1781478308997889461}
   - component: {fileID: 3379124320536154439}
+  - component: {fileID: 1750149416426956771}
   m_Layer: 0
   m_Name: Tree_Trunk
   m_TagString: Untagged
@@ -53,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,3 +121,47 @@ CircleCollider2D:
   m_Offset: {x: 0.0033193917, y: 0.011296195}
   serializedVersion: 2
   m_Radius: 0.14631218
+--- !u!114 &1750149416426956771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540934174798818634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: 0.07269934, y: -0.093540765, z: 0.000000007450581}
+  - {x: 0.018481998, y: -0.11208798, z: 0.000000007450581}
+  - {x: -0.051571976, y: -0.098663025, z: 0.000000007450581}
+  - {x: -0.11217218, y: -0.086705856, z: 0.000000007450581}
+  - {x: -0.14982316, y: -0.06452753, z: 0.000000007450581}
+  - {x: -0.16508426, y: -0.035251074, z: 0.000000007450581}
+  - {x: -0.15027148, y: -0.000518334, z: 0.000000007450581}
+  - {x: -0.17893487, y: 0.016000656, z: 0.000000007450581}
+  - {x: -0.17983586, y: 0.045456, z: 0.000000007450581}
+  - {x: -0.15150028, y: 0.066331215, z: 0.000000007450581}
+  - {x: -0.12834269, y: 0.10047387, z: 0.000000007450581}
+  - {x: -0.080205336, y: 0.14259449, z: 0.000000007450581}
+  - {x: -0.018604012, y: 0.16125455, z: 0.000000007450581}
+  - {x: 0.049574643, y: 0.1611301, z: 0.000000007450581}
+  - {x: 0.14139552, y: 0.0998876, z: 0.000000007450581}
+  - {x: 0.16634889, y: 0.034771908, z: 0.000000007450581}
+  - {x: 0.16319716, y: -0.031718425, z: 0.000000007450581}
+  - {x: 0.12302998, y: -0.09236751, z: 0.000000007450581}
+  m_ShapePathHash: 115235984
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -116858
+  m_LocalBounds:
+    m_Center: {x: -0.0067434907, y: 0.024583295, z: 0}
+    m_Extent: {x: 0.17309237, y: 0.13667127, z: 0}

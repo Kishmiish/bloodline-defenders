@@ -265,8 +265,8 @@ GameObject:
   - component: {fileID: 1418668254688154910}
   - component: {fileID: 4691993698747520889}
   - component: {fileID: 8461928290124026404}
-  - component: {fileID: 9000076301229387020}
   - component: {fileID: 2714032743961457157}
+  - component: {fileID: 9000076301229387020}
   - component: {fileID: 7330607992427431063}
   m_Layer: 0
   m_Name: Orc
@@ -311,7 +311,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -426,25 +426,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &9000076301229387020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5056452452986538296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf176a8208f5d740b747e42aa87a9ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialSpeed: 0.9
-  initialHealth: 7
-  InitialAttackDelay: 0.7
-  InitialAttackDamage: 7
-  enemyDrop:
-  - {fileID: 7964663760538592516, guid: ba05df46b1cf0e585ae4ba2337365f1c, type: 3}
-  - {fileID: 5294402461180281228, guid: 8bf37830918c96b31b10a21af32361e5, type: 3}
 --- !u!114 &2714032743961457157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,6 +447,26 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &9000076301229387020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056452452986538296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf176a8208f5d740b747e42aa87a9ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialSpeed: 0.9
+  initialHealth: 7
+  InitialAttackDelay: 0.7
+  InitialAttackDamage: 7
+  enemyDrop:
+  - {fileID: 7964663760538592516, guid: ba05df46b1cf0e585ae4ba2337365f1c, type: 3}
+  - {fileID: 5294402461180281228, guid: 8bf37830918c96b31b10a21af32361e5, type: 3}
+  obejctToDestroy: {fileID: 0}
 --- !u!114 &7330607992427431063
 MonoBehaviour:
   m_ObjectHideFlags: 0

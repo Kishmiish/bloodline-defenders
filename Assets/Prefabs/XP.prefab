@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4903258263941234987}
   - component: {fileID: 1926206174851982901}
   - component: {fileID: 1935722990104815012}
+  - component: {fileID: 4746138385843526402}
   m_Layer: 0
   m_Name: XP
   m_TagString: XP
@@ -120,3 +121,15 @@ CircleCollider2D:
   m_Offset: {x: 0.011100307, y: 0.014066756}
   serializedVersion: 2
   m_Radius: 0.13483293
+--- !u!114 &4746138385843526402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294402461180281228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123ca644c4aac6ddcb446aee9ca6cb1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

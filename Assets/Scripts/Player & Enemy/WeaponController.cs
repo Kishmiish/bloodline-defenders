@@ -80,12 +80,12 @@ public class WeaponController : MonoBehaviour
 
     public void LevelUp()
     {
-        weaponDamage++;
+        weaponDamage *= 1.07f;
     }
 
     void InitializeValue()
     {
-        int damageLevel = PlayerPrefs.GetInt("WeaponDamageLeve");
+        int damageLevel = PlayerPrefs.GetInt("WeaponDamageLevel");
         int cooldownLevel = PlayerPrefs.GetInt("WeaponCooldownLevel");
         for (int i = 0; i < damageLevel; i++)
         {
