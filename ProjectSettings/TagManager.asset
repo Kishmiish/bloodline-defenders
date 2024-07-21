@@ -13,11 +13,12 @@ TagManager:
   - Coin
   - SeedSyncer
   - Dead
+  - UpgradeMenu
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Map
   - Water
   - UI
   - 

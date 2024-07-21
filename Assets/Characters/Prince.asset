@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d798bedf57cb5b07c93e459422b52e94, type: 3}
+  m_Name: Prince
+  m_EditorClassIdentifier: 
+  id: 5
+  displayName: Prince
+  icon: {fileID: -691565451, guid: d360eb4a8925561f1a2ce78d589a321c, type: 3}
+  gameplayPrefab: {fileID: 4963864621168613259, guid: c4bff0b72002d726699de5c27a59d071, type: 3}
+  weaponIcon: {fileID: 1622258847, guid: 8eb31c4d9453c225e9b52e8f9d7e5f8e, type: 3}

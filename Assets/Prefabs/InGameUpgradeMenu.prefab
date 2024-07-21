@@ -547,17 +547,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6572573461877123736}
-  - component: {fileID: 7771188229136049363}
   - component: {fileID: 3513525644885109983}
   - component: {fileID: 5303949737839521971}
   - component: {fileID: 8859419037117701625}
   m_Layer: 5
   m_Name: InGameUpgradeMenu
-  m_TagString: Untagged
+  m_TagString: UpgradeMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6572573461877123736
 RectTransform:
   m_ObjectHideFlags: 0
@@ -581,27 +580,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -36.378}
   m_SizeDelta: {x: 907.897, y: 480.931}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7771188229136049363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525922289309144504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3797196775
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!114 &3513525644885109983
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MagicCasting : MonoBehaviour
@@ -18,5 +15,9 @@ public class MagicCasting : MonoBehaviour
     void CastMagic()
     {
         Instantiate(magicOrb, gameObject.transform.position, quaternion.identity);
+    }
+    public void LevelUp()
+    {
+        magicOrb.GetComponent<OrbController>().LevelUP();
     }
 }

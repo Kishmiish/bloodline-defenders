@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Enemy : NetworkBehaviour
 {
+    [SerializeField] private AudioSource hit;
     [SerializeField] private float initialSpeed;
     [SerializeField] private float initialHealth;
     [SerializeField] private float InitialAttackDelay;
@@ -80,6 +81,7 @@ public class Enemy : NetworkBehaviour
     }
     public bool Damage(float damage)
     {
+        hit.Play();
         health -= damage;
         setHealthBar();
         if (health <= 0)
@@ -96,7 +98,7 @@ public class Enemy : NetworkBehaviour
     }
     IEnumerator animationDelay()
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.3f);
         if(IsOwner){
             DestroyObjectServerRpc();
         }

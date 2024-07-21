@@ -4,7 +4,7 @@ using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
-public class InGameUpgradeMenu : NetworkBehaviour
+public class InGameUpgradeMenu : MonoBehaviour
 {
     [SerializeField] private OrbController orb;
     private PlayerMovement player;
@@ -35,7 +35,7 @@ public class InGameUpgradeMenu : NetworkBehaviour
         {
             player.GetComponent<MagicCasting>().enabled = true;
         } else {
-            orb.LevelUP();
+            player.GetComponent<MagicCasting>().LevelUp();
         }
         Time.timeScale = 1f;
     }

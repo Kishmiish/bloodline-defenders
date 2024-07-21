@@ -18,12 +18,7 @@ public class OrbController : MonoBehaviour
     }
     void Update()
     {
-        float difX = closest.gameObject.transform.position.x - transform.position.x;
-        float difY = closest.gameObject.transform.position.y - transform.position.y;
-        Debug.Log("DifX: " + difX + " - " + "DifY: " + difY);
-        float degree = Mathf.Rad2Deg * Mathf.Atan(difY / difX);
-        Debug.Log(degree);
-        transform.rotation = Quaternion.Euler(new Vector3(0,0,degree)); 
+        if(closest == null) { Destroy(gameObject); }
         transform.Translate((closest.gameObject.transform.position - transform.position).normalized * speed);
     }
     void FindClosestEnemy()

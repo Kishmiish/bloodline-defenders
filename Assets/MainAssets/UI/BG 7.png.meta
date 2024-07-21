@@ -273,7 +273,7 @@ TextureImporter:
         width: 30
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -281,6 +281,69 @@ TextureImporter:
       bones: []
       spriteID: 94c1bc9dade226e85a7d5f0a82f1f510
       internalID: -154202010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spear
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 644
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f4488bb0f9ed79aad335b74a837e2c
+      internalID: 434074942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heavy_Sword
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 676
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 489564ef4ceb170c78e9d6694dff4ca6
+      internalID: 1622258847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_Sword
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 676
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30715dcc6a60287a09183687075d8e33
+      internalID: -1915911543
       vertices: []
       indices: 
       edges: []
@@ -299,9 +362,12 @@ TextureImporter:
       Cooldown: 508199640
       Damage: 1025531933
       Health: 1192001417
+      Heavy_Sword: 1622258847
       Katana: -2013170365
+      Light_Sword: -1915911543
       Magic: 1892196915
       Ring: 1599347677
+      Spear: 434074942
       Speed: -240433638
       Torch: -154202010
       Whip: 812588630

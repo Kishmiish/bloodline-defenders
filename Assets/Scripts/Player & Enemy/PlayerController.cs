@@ -1,9 +1,12 @@
+using System.Globalization;
 using TMPro;
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     [SerializeField] float maxHealth = 100;
     [SerializeField] private GameObject gameManager;
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private WeaponController weaponController;
     private Slider XPBar;
     private TMP_Text coinCounter;
+    private GameObject upgradeMenu;
     
     public float GetMaxHealth()
     {
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         health = maxHealth;
         SetMaxHealthBar();
+        SetHealthBar();
         XP = 0;
         nextLevelXP = 5;
         coinCounter = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<TMP_Text>();
@@ -43,6 +48,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         weaponController = GetComponentInChildren<WeaponController>();
         XPBar = GameObject.FindGameObjectWithTag("XPBar").GetComponent<Slider>();
+        upgradeMenu = GameObject.FindGameObjectWithTag("UpgradeMenu");
     }
 
     
@@ -55,6 +61,7 @@ public class PlayerController : MonoBehaviour
         if(coinCounter == null) { coinCounter = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<TMP_Text>(); }
         if(XPBar == null) { XPBar = GameObject.FindGameObjectWithTag("XPBar").GetComponent<Slider>(); }
         if(gameManager == null) { gameManager = GameObject.FindGameObjectWithTag("GameController"); }
+        if(upgradeMenu == null) { upgradeMenu = GameObject.FindGameObjectWithTag("UpgradeMenu"); }
         if (playerMovement.moveDirection.x != 0 || playerMovement.moveDirection.y != 0) {
             animator.SetBool("Move", true);
             SpriteDirectionChecker();
@@ -83,39 +90,46 @@ public class PlayerController : MonoBehaviour
         healthBar.value = health;
     }
     public void receiveDamage(float damage){
-        if(damage >= health){
-            CancelInvoke();
-            Death();
-        }
-        else{
-            health -= damage;
-            if(health > 0)
-            {
-                animator.SetTrigger("Hit");
+        if(IsOwner){
+            if(damage >= health){
+                CancelInvoke();
+                Death();
             }
-            SetHealthBar();
+            else{
+                health -= damage;
+                if(health > 0)
+                {
+                    animator.SetTrigger("Hit");
+                }
+                SetHealthBar();
+            }
         }
     }
 
     public void DealDamage()
     {
-        weaponEffect.Play();
-        weaponController.Attack();
+        if(IsOwner){
+            weaponEffect.Play();
+            weaponController.Attack();
+        }
     }
 
     void Death(){
-        if(health > 0){
-            animator.SetTrigger("DeadTrigger");
-            animator.SetBool("DeadBoolean", true);
+        if(IsOwner){
+            if(health > 0){
+                animator.SetTrigger("DeadTrigger");
+                animator.SetBool("DeadBoolean", true);
+            }
+            health = 0;
+            SetHealthBar();
+            tag = "Dead";
+            GetComponent<MagicCasting>().CancelInvoke();
+            gameManager.GetComponent<GameManager>().GameOver();
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            GetComponent<PlayerMovement>().enabled = false;
+            GetComponentInChildren<WeaponController>().CancelInvoke();
+            GameObject.Find("Weapon").SetActive(false);
         }
-        health = 0;
-        SetHealthBar();
-        tag = "Dead";
-        gameManager.GetComponent<GameManager>().GameOver();
-        gameObject.GetComponent<Collider2D>().enabled = false;
-        GetComponent<PlayerMovement>().enabled = false;
-        GetComponentInChildren<WeaponController>().CancelInvoke();
-        GameObject.Find("Weapon").SetActive(false);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -138,22 +152,29 @@ public class PlayerController : MonoBehaviour
     }
     public void IncreaseXP()
     {
-        XP++;
-        XPBar.value = XP;
-        if(XP == nextLevelXP)
-        {
-            LevelUp();
+        if(IsOwner){    
+            XP++;
+            XPBar.value = XP;
+            if(XP == nextLevelXP)
+            {
+                LevelUp();
+            }
         }
     }
     public void IncreaseHealth()
     {
-        health += 10;
-        SetHealthBar();
+        if(IsOwner)
+        {
+            health += 10;
+            SetHealthBar();
+        }
     }
     public void IncreaseCoin(int value)
     {
-        PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + value);
-        SetCoin();
+        if(IsOwner){
+            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + value);
+            SetCoin();
+        }
     }
     void LevelUp()
     {
@@ -166,8 +187,10 @@ public class PlayerController : MonoBehaviour
 
     void SetCoin()
     {
-        if(coinCounter == null) { coinCounter = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<TMP_Text>(); }
-        coinCounter.text = ": " + PlayerPrefs.GetInt("Coin");
+        if(IsOwner){
+            if(coinCounter == null) { coinCounter = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<TMP_Text>(); }
+            coinCounter.text = ": " + PlayerPrefs.GetInt("Coin");
+        }
     }
 
     public void EnableRing(bool condition)

@@ -184,6 +184,8 @@ GameObject:
   - component: {fileID: 2298465366841335806}
   - component: {fileID: -3163189967231909084}
   - component: {fileID: -5427917159929653285}
+  - component: {fileID: -6775376461780875155}
+  - component: {fileID: -7990375658633797022}
   m_Layer: 0
   m_Name: BallAndChainBot
   m_TagString: Player
@@ -358,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 850185793
+  GlobalObjectIdHash: 3231042738
   InScenePlacedSourceGlobalObjectIdHash: 850185793
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -401,7 +403,6 @@ MonoBehaviour:
   healthBar: {fileID: 6261306543413975518}
   weaponEffect: {fileID: -3163189967231909084}
   ring: {fileID: 4220789306396332828}
-  mainCollider: {fileID: 7104922197198736440}
 --- !u!114 &-7370935151190411719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,6 +556,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torch: {fileID: 3943150792841182530}
+--- !u!114 &-6775376461780875155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288386271672519090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7990375658633797022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288386271672519090}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e95fc9b87aaff6ac972afca7463bcd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 1.5
+  magicOrb: {fileID: 6526504912539778229, guid: f5d5bb6c2a48b9ea8a0dbae77417ed3e, type: 3}
 --- !u!1 &1732459538133859413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59a30db2a3c82427bfbe8d8c827bda4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialTimeToAttack: 2.5
+  initialTimeToAttack: 2.2
   rigthWeapon: {fileID: 1754427427090257101}
   leftWeapon: {fileID: 4927629532981116820}
   AttackRange: {x: 4, y: 2}
@@ -1169,7 +1196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5747302232327686684, guid: be180a9e802f095f3b100b96801a23f6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5747302232327686684, guid: be180a9e802f095f3b100b96801a23f6, type: 3}
       propertyPath: m_LocalRotation.w

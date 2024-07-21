@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if(upgradeMenu == null) { GameObject.FindGameObjectWithTag("UpgradeMenu"); }
         elpasedTime += Time.deltaTime;
         currentLevel = Mathf.FloorToInt(elpasedTime % 60) / 5;
         if(currentLevel != prevLevel){
@@ -104,7 +105,11 @@ public class GameManager : MonoBehaviour
     }
     public void UpgradeMenu()
     {
-        if(ServerManager.Instance.ClientData.Count == 1) { Time.timeScale = 0f; }
         upgradeMenu.SetActive(true);
+        try
+        {
+            if(ServerManager.Instance.ClientData.Count == 1) { Time.timeScale = 0f; }
+        }
+        catch (System.Exception) {}
     }
 }
