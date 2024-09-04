@@ -9,17 +9,25 @@ Gameplay
 
 **Multiplayer**: Players can host or join a game, up to 4 player can team up
 
+![Multiplayer](https://github.com/user-attachments/assets/8174b936-391e-4c62-a800-a61cd6e497eb)
+
 **Online mode**: Sign-up a new account to save your progress and pick up where you left off on any device
 
+![Screenshot 2024-09-03 214619](https://github.com/user-attachments/assets/59fae9b1-1032-434b-834e-9fd6edb7d730)
+
 **Unique Weapons and Abilities**: Each character has it's own specifications and weapon
+
+![Characters](https://github.com/user-attachments/assets/9dfac3f0-67d8-407e-add9-e3ec1798c1ae)
 
 **Enemy Variety**: There are 3 types of enemies in this game which will spawn after the player survives for some amount of time
 
 **Enemy Drops**: All the enemies can drop either XP gem or health gem, each with respective drop chance
 
+**In-game upgrades**: 3 different upgrades to choose every time the player XP bar gets full
+
 **Permanent upgrades**: There are 4 different upgrades for players to buy with coins
 
-**In-game upgrades**: 3 different upgrades to choose every time the player XP bar gets full
+![Screenshot 2024-09-03 214419](https://github.com/user-attachments/assets/6037e2db-f6da-48ea-8638-2f729d28e812)
 
 ## Installation
 
